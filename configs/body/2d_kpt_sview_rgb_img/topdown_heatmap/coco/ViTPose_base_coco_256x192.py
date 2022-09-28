@@ -30,13 +30,13 @@ lr_config = dict(
 total_epochs = 210
 target_type = 'GaussianHeatmap'
 channel_cfg = dict(
-    num_output_channels=17,
-    dataset_joints=17,
+    num_output_channels=22,
+    dataset_joints=22,
     dataset_channel=[
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
     ],
     inference_channel=[
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 
     ])
 
 # model settings
@@ -45,7 +45,8 @@ model = dict(
     pretrained=None,
     backbone=dict(
         type='ViT',
-        img_size=(256, 192),
+        # img_size=(256, 192),
+        img_size=(640, 480),
         patch_size=16,
         embed_dim=768,
         depth=12,
@@ -75,7 +76,8 @@ model = dict(
         use_udp=True))
 
 data_cfg = dict(
-    image_size=[192, 256],
+    # image_size=[192, 256],
+    image_size=[480, 640],
     heatmap_size=[48, 64],
     num_output_channels=channel_cfg['num_output_channels'],
     num_joints=channel_cfg['dataset_joints'],
@@ -139,7 +141,8 @@ val_pipeline = [
 
 test_pipeline = val_pipeline
 
-data_root = 'data/coco'
+# data_root = 'data/coco'
+data_root = '/home/sehwan/datasets/GM'
 data = dict(
     samples_per_gpu=64,
     workers_per_gpu=4,
@@ -147,22 +150,22 @@ data = dict(
     test_dataloader=dict(samples_per_gpu=32),
     train=dict(
         type='TopDownCocoDataset',
-        ann_file=f'{data_root}/annotations/person_keypoints_train2017.json',
-        img_prefix=f'{data_root}/train2017/',
+        ann_file=f'{data_root}/annotations/train_baby_keypoints.json',
+        img_prefix=f'{data_root}/images/train/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
         type='TopDownCocoDataset',
-        ann_file=f'{data_root}/annotations/person_keypoints_val2017.json',
-        img_prefix=f'{data_root}/val2017/',
+        ann_file=f'{data_root}/annotations/valid_baby_keypoints.json',
+        img_prefix=f'{data_root}/images/valid/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
         type='TopDownCocoDataset',
-        ann_file=f'{data_root}/annotations/person_keypoints_val2017.json',
-        img_prefix=f'{data_root}/val2017/',
+        ann_file=f'{data_root}/annotations/test_baby_keypoints.json',
+        img_prefix=f'{data_root}/images/test/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,
         dataset_info={{_base_.dataset_info}}),

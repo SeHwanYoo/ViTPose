@@ -12,170 +12,313 @@ dataset_info = dict(
     ),
     keypoint_info={
         0:
-        dict(name='nose', id=0, color=[51, 153, 255], type='upper', swap=''),
+        dict(
+            name='head', 
+            id=0, 
+            color=[255, 128, 0], 
+            type='upper', 
+            swap=''),
         1:
         dict(
-            name='left_eye',
-            id=1,
-            color=[51, 153, 255],
-            type='upper',
-            swap='right_eye'),
-        2:
-        dict(
             name='right_eye',
-            id=2,
-            color=[51, 153, 255],
+            id=1,
+            color=[255, 128, 0],
             type='upper',
             swap='left_eye'),
+        2:
+        dict(
+            name='left_eye',
+            id=2,
+            color=[255, 128, 0],
+            type='upper',
+            swap='right_eye'),
         3:
         dict(
-            name='left_ear',
+            name='neck',
             id=3,
-            color=[51, 153, 255],
+            color=[255, 128, 0],
             type='upper',
-            swap='right_ear'),
+            swap=''),
         4:
         dict(
-            name='right_ear',
+            name='right_shoulder',
             id=4,
             color=[51, 153, 255],
             type='upper',
-            swap='left_ear'),
+            swap='left_shoulder'),
         5:
         dict(
-            name='left_shoulder',
-            id=5,
-            color=[0, 255, 0],
-            type='upper',
-            swap='right_shoulder'),
-        6:
-        dict(
-            name='right_shoulder',
-            id=6,
-            color=[255, 128, 0],
-            type='upper',
-            swap='left_shoulder'),
-        7:
-        dict(
-            name='left_elbow',
-            id=7,
-            color=[0, 255, 0],
-            type='upper',
-            swap='right_elbow'),
-        8:
-        dict(
             name='right_elbow',
-            id=8,
-            color=[255, 128, 0],
+            id=5,
+            color=[51, 153, 255],
             type='upper',
             swap='left_elbow'),
+        6:
+        dict(
+            name='right_wrist',
+            id=6,
+            color=[51, 153, 255],
+            type='upper',
+            swap='left_wrist'),
+        7:
+        dict(
+            name='right_hand',
+            id=7,
+            color=[51, 153, 255],
+            type='upper',
+            swap='right_hand'),
+        8:
+        dict(
+            name='left_shoulder',
+            id=8,
+            color=[0, 255, 0],
+            type='upper',
+            swap='left_shoulder'),
         9:
         dict(
-            name='left_wrist',
+            name='left_elbow',
             id=9,
             color=[0, 255, 0],
             type='upper',
-            swap='right_wrist'),
+            swap='right_elbow'),
         10:
         dict(
-            name='right_wrist',
+            name='left_wrist',
             id=10,
-            color=[255, 128, 0],
+            color=[0, 255, 0],
             type='upper',
-            swap='left_wrist'),
+            swap='right_wrist'),
         11:
         dict(
-            name='left_hip',
+            name='left_hand',
             id=11,
             color=[0, 255, 0],
-            type='lower',
-            swap='right_hip'),
+            type='upper',
+            swap='right_hand'),
         12:
         dict(
-            name='right_hip',
+            name='pelvis',
             id=12,
             color=[255, 128, 0],
             type='lower',
-            swap='left_hip'),
+            swap=''),
         13:
         dict(
-            name='left_knee',
+            name='right_hip',
             id=13,
-            color=[0, 255, 0],
+            color=[51, 153, 255],
             type='lower',
-            swap='right_knee'),
+            swap='left_hip'),
         14:
         dict(
             name='right_knee',
             id=14,
-            color=[255, 128, 0],
+            color=[51, 153, 255],
             type='lower',
             swap='left_knee'),
         15:
         dict(
-            name='left_ankle',
+            name='right_ankle',
             id=15,
+            color=[51, 153, 255],
+            type='lower',
+            swap='left_ankle'),
+        16:
+        dict(
+            name='right_foot',
+            id=16,
+            color=[51, 153, 255],
+            type='lower',
+            swap='left_ankle'),
+        17:
+        dict(
+            name='left_hip',
+            id=17,
+            color=[0, 255, 0],
+            type='lower',
+            swap='right_hip'),
+        18:
+        dict(
+            name='left_knee',
+            id=18,
+            color=[0, 255, 0],
+            type='lower',
+            swap='right_knee'),
+        19:
+        dict(
+            name='left_ankle',
+            id=19,
             color=[0, 255, 0],
             type='lower',
             swap='right_ankle'),
-        16:
+        20:
         dict(
-            name='right_ankle',
-            id=16,
-            color=[255, 128, 0],
+            name='left_foot',
+            id=20,
+            color=[0, 255, 0],
             type='lower',
-            swap='left_ankle')
+            swap='right_foot')
+        
     },
     skeleton_info={
+        # head 
         0:
-        dict(link=('left_ankle', 'left_knee'), id=0, color=[0, 255, 0]),
+        dict(
+            link=('head', 'right_eye'), 
+            id=0, 
+            color=[255, 128, 0]),
         1:
-        dict(link=('left_knee', 'left_hip'), id=1, color=[0, 255, 0]),
+        dict(
+            link=('right_eye', 'neck'), 
+            id=1, 
+            color=[255, 128, 0]),
         2:
-        dict(link=('right_ankle', 'right_knee'), id=2, color=[255, 128, 0]),
+        dict(
+            link=('neck', 'left_eye'), 
+            id=2, 
+            color=[255, 128, 0]),
         3:
-        dict(link=('right_knee', 'right_hip'), id=3, color=[255, 128, 0]),
+        dict(
+            link=('left_eye', 'head'), 
+            id=3, 
+            color=[255, 128, 0]),
+        # body
         4:
-        dict(link=('left_hip', 'right_hip'), id=4, color=[51, 153, 255]),
+        dict(
+            link=('neck', 'right_shoulder'), 
+            id=4, 
+            color=[255, 128, 0]),
         5:
-        dict(link=('left_shoulder', 'left_hip'), id=5, color=[51, 153, 255]),
+        dict(
+            link=('neck', 'left_shoulder'), 
+            id=5, 
+            color=[255, 128, 0]),
         6:
-        dict(link=('right_shoulder', 'right_hip'), id=6, color=[51, 153, 255]),
+        dict(
+            link=('neck', 'pelvis'), 
+            id=6, 
+            color=[255, 128, 0]),
         7:
         dict(
-            link=('left_shoulder', 'right_shoulder'),
-            id=7,
-            color=[51, 153, 255]),
+            link=('pelvis', 'right_hip'), 
+            id=7, 
+            color=[255, 128, 0]),
         8:
-        dict(link=('left_shoulder', 'left_elbow'), id=8, color=[0, 255, 0]),
+        dict(
+            link=('pelvis', 'left_hip'), 
+            id=8, 
+            color=[255, 128, 0]),
+        # right arm 
         9:
         dict(
-            link=('right_shoulder', 'right_elbow'), id=9, color=[255, 128, 0]),
+            link=('right_shoulder', 'right_elbow'), 
+            id=9, 
+            color=[51, 153, 255]),
         10:
-        dict(link=('left_elbow', 'left_wrist'), id=10, color=[0, 255, 0]),
+        dict(
+            link=('right_elbow', 'right_wrist'), 
+            id=10, 
+            color=[51, 153, 255]),
         11:
-        dict(link=('right_elbow', 'right_wrist'), id=11, color=[255, 128, 0]),
+        dict(
+            link=('right_wrist', 'right_hand'), 
+            id=11, 
+            color=[51, 153, 255]),
+        # left arm
         12:
-        dict(link=('left_eye', 'right_eye'), id=12, color=[51, 153, 255]),
+        dict(
+            link=('left_shoulder', 'left_elbow'), 
+            id=12, 
+            color=[0, 255, 0]),
         13:
-        dict(link=('nose', 'left_eye'), id=13, color=[51, 153, 255]),
-        14:
-        dict(link=('nose', 'right_eye'), id=14, color=[51, 153, 255]),
+        dict(
+            link=('left_elbow', 'left_wrist'), 
+            id=13, 
+            color=[0, 255, 0]),
         15:
-        dict(link=('left_eye', 'left_ear'), id=15, color=[51, 153, 255]),
+        dict(
+            link=('left_wrist', 'left_hand'), 
+            id=15, 
+            color=[0, 255, 0]),
+        # right leg 
         16:
-        dict(link=('right_eye', 'right_ear'), id=16, color=[51, 153, 255]),
+        dict(
+            link=('right_hip', 'right_knee'), 
+            id=16, 
+            color=[51, 153, 255]),
         17:
-        dict(link=('left_ear', 'left_shoulder'), id=17, color=[51, 153, 255]),
+        dict(
+            link=('right_knee', 'right_ankle'), 
+            id=17, 
+            color=[51, 153, 255]),
         18:
         dict(
-            link=('right_ear', 'right_shoulder'), id=18, color=[51, 153, 255])
+            link=('right_ankle', 'right_foot'), 
+            id=18, 
+            color=[51, 153, 255]),
+        # left leg
+        19:
+        dict(
+            link=('left_hip', 'left_knee'), 
+            id=19, 
+            color=[0, 255, 0]),
+        20:
+        dict(
+            link=('left_knee', 'left_ankle'), 
+            id=20, 
+            color=[0, 255, 0]),
+        21:
+        dict(
+            link=('left_ankle', 'left_foot'), 
+            id=21, 
+            color=[0, 255, 0]),
+        
     },
     joint_weights=[
-        1., 1., 1., 1., 1., 1., 1., 1.2, 1.2, 1.5, 1.5, 1., 1., 1.2, 1.2, 1.5,
-        1.5
+        1., # 0
+        1., # 1
+        1., # 2
+        1., # 3
+        1., # 4
+        1., # 5
+        1., # 6
+        1.2, # 7
+        1.2, # 8
+        1.5, # 9
+        1.5, # 10
+        1., # 11
+        1., # 12
+        1.2, # 13
+        1.2, # 14
+        1.5, # 15
+        1.5, # 16
+        1.2, # 17
+        1.2, # 18
+        1.5,# 19
+        1.5, # 20
+        1.5 # 21
     ],
     sigmas=[
-        0.026, 0.025, 0.025, 0.035, 0.035, 0.079, 0.079, 0.072, 0.072, 0.062,
-        0.062, 0.107, 0.107, 0.087, 0.087, 0.089, 0.089
+        0.026, # 0
+        0.025, # 1
+        0.025, # 2
+        0.035, # 3
+        0.035, # 4
+        0.079, # 5
+        0.079, # 6
+        0.072, # 7
+        0.072, # 8
+        0.062, # 9
+        0.062, # 10
+        0.107, # 11
+        0.107, # 12
+        0.087, # 13
+        0.087, # 14
+        0.089, # 15
+        0.089, # 16
+        0.107, # 17
+        0.087, # 18
+        0.087, # 19
+        0.089, # 20
+        0.089, # 21
     ])
