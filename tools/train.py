@@ -65,7 +65,7 @@ def parse_args():
         choices=['none', 'pytorch', 'slurm', 'mpi'],
         default='none',
         help='job launcher')
-    parser.add_argument('--local_rank', type=int, default=0)
+    # parser.add_argument('--local_rank', type=int, default=0)
     parser.add_argument(
         '--autoscale-lr',
         action='store_true',
@@ -73,7 +73,7 @@ def parse_args():
     args = parser.parse_args()
     # if 'LOCAL_RANK' not in os.environ:
     # os.environ['LOCAL_RANK'] = str(args.local_rank)
-    os.environ['LOCAL_RANK'] = os.environ['OMPI_COMM_WORLD_LOCAL_RANK']
+    # os.environ['LOCAL_RANK'] = os.environ['OMPI_COMM_WORLD_LOCAL_RANK']
 
     return args
 
