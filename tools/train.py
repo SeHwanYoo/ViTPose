@@ -73,7 +73,7 @@ def parse_args():
     args = parser.parse_args()
     # if 'LOCAL_RANK' not in os.environ:
     # os.environ['LOCAL_RANK'] = str(args.local_rank)
-    # os.environ['LOCAL_RANK'] = os.environ['OMPI_COMM_WORLD_LOCAL_RANK']
+    # os.environ['LOCAL_RANK'] = int
 
     return args
 
