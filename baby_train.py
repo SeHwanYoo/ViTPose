@@ -12,7 +12,7 @@ from mmpose.datasets import DatasetInfo
 pose_config = 'configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/ViTPose_base_coco_256x192.py'
 pose_checkpoint = 'checkout'
 img_root = '../../datasets/GM/images'
-json_file = '../../datasets/GM/annotations'
+json_file = '../../datasets/GM/annotations/train_baby_keypoints.json'
 out_img_root = 'outputs' 
 work_dir = 'outputs'
 
