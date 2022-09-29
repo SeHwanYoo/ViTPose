@@ -10,7 +10,8 @@ from mmpose.apis import (inference_top_down_pose_model, init_pose_model,
 from mmpose.datasets import DatasetInfo
 
 pose_config = 'configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/ViTPose_base_coco_256x192.py'
-pose_checkpoint = 'checkout'
+# pose_checkpoint = 'checkout'
+pose_checkpoint = None
 img_root = '../../datasets/GM/images'
 json_file = '../../datasets/GM/annotations/train_baby_keypoints.json'
 out_img_root = 'outputs' 
