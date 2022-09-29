@@ -22,13 +22,13 @@ def main():
     """
     parser = ArgumentParser()
     parser.add_argument('pose_config', help='Config file for detection', default=pose_config)
-    parser.add_argument('pose_checkpoint', help='Checkpoint file', required=False, default=pose_checkout)
-    parser.add_argument('--img-root', type=str, required=False, default=img_root, help='Image root')
+    parser.add_argument('pose_checkpoint', help='Checkpoint file', default=pose_checkout)
+    parser.add_argument('--img-root', type=str, default=img_root, help='Image root')
     parser.add_argument(
         '--json-file',
         type=str,
         # default='',
-        required=False, 
+        # required=False, 
         default=json_file, 
         help='Json file containing image info.')
     parser.add_argument(
@@ -39,7 +39,7 @@ def main():
     parser.add_argument(
         '--out-img-root',
         type=str,
-        required=False, 
+        # required=False, 
         default=out_img_root,
         help='Root of the output img file. '
         'Default not saving the visualization images.')
