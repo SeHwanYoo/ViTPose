@@ -10,7 +10,7 @@ from mmpose.apis import (inference_top_down_pose_model, init_pose_model,
 from mmpose.datasets import DatasetInfo
 
 pose_config = 'configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/ViTPose_base_coco_256x192.py'
-pose_checkout = 'checkout'
+pose_checkpoint = 'checkout'
 img_root = '../../datasets/GM/images'
 json_file = '../../datasets/GM/annotations'
 out_img_root = 'outputs' 
@@ -22,7 +22,7 @@ def main():
     """
     parser = ArgumentParser()
     parser.add_argument('pose_config', help='Config file for detection', default=pose_config)
-    parser.add_argument('pose_checkpoint', help='Checkpoint file', default=pose_checkout)
+    parser.add_argument('pose_checkpoint', help='Checkpoint file', default=pose_checkpoint)
     parser.add_argument('--img-root', type=str, default=img_root, help='Image root')
     parser.add_argument(
         '--json-file',
@@ -64,8 +64,10 @@ def main():
 
     coco = COCO(args.json_file)
     # build the pose model from a config file and a checkpoint file
-    pose_model = init_pose_model(
-        args.pose_config, args.pose_checkpoint, device=args.device.lower())
+    # pose_model = init_pose_model(args.pose_config, args.pose_checkpoint, device=args.device.lower())
+    pose_model = init_pose_model(pose_config, 
+                                 pose_checkpoint, 
+                                 device=args.device.lower())
 
     dataset = pose_model.cfg.data['test']['type']
     dataset_info = pose_model.cfg.data['test'].get('dataset_info', None)
