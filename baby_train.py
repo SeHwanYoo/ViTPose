@@ -21,8 +21,8 @@ def main():
     Require the json_file containing boxes.
     """
     parser = ArgumentParser()
-    parser.add_argument('pose_config', help='Config file for detection', default=pose_config)
-    parser.add_argument('pose_checkpoint', help='Checkpoint file', default=pose_checkpoint)
+    parser.add_argument('pose_config', required=False, help='Config file for detection', default=pose_config)
+    parser.add_argument('pose_checkpoint', required=False, help='Checkpoint file', default=pose_checkpoint)
     parser.add_argument('--img-root', type=str, default=img_root, help='Image root')
     parser.add_argument(
         '--json-file',
