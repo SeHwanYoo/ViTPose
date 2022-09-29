@@ -162,8 +162,16 @@ def _inference_single_pose_model(model,
         # TODO: These will be removed in the later versions.
         if dataset in ('TopDownCocoDataset', 'TopDownOCHumanDataset',
                        'AnimalMacaqueDataset'):
-            flip_pairs = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12],
-                          [13, 14], [15, 16]]
+            # flip_pairs = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12],
+                        #   [13, 14], [15, 16]]
+            flip_pairs = [
+                            [1,2],[2,4],[4,3],[3,1], # Head
+                            [4,5],[4,9],[4,13],[13,14],[13,18], # Body
+                            [5,6],[6,7],[7,8], # Right arm
+                            [9,10],[10,11],[11,12], # Left arm
+                            [14,15],[15,16],[16,17], # Right leg
+                            [18,19],[19,20],[20,21] # Left leg
+                        ]
         elif dataset == 'TopDownCocoWholeBodyDataset':
             body = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12],
                     [13, 14], [15, 16]]
