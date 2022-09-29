@@ -14,21 +14,22 @@ pose_checkout = 'checkout'
 img_root = '../../datasets/GM/images'
 json_file = '../../datasets/GM/annotations'
 out_img_root = 'outputs' 
-
+work_dir = 'outputs'
 
 def main():
     """Visualize the demo images.
     Require the json_file containing boxes.
     """
     parser = ArgumentParser()
-    parser.add_argument('pose_config', help='Config file for detection')
-    parser.add_argument('pose_checkpoint', help='Checkpoint file')
-    parser.add_argument('--img-root', type=str, default='', help='Image root')
+    parser.add_argument('pose_config', help='Config file for detection', required=False, default=pose_config)
+    parser.add_argument('pose_checkpoint', help='Checkpoint file', required=False, default=pose_checkout)
+    parser.add_argument('--img-root', type=str, required=False, default=img_root, help='Image root')
     parser.add_argument(
         '--json-file',
         type=str,
         # default='',
-        default=pose_config, 
+        required=False, 
+        default=json_file, 
         help='Json file containing image info.')
     parser.add_argument(
         '--show',
@@ -38,7 +39,8 @@ def main():
     parser.add_argument(
         '--out-img-root',
         type=str,
-        default='',
+        required=False, 
+        default=out_img_root,
         help='Root of the output img file. '
         'Default not saving the visualization images.')
     parser.add_argument(
