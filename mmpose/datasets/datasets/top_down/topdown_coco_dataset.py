@@ -96,23 +96,17 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
 
     def _get_db(self):
         """Load dataset."""
-        print('------------------------------------------------>')
         if (not self.test_mode) or self.use_gt_bbox:
             # use ground truth bbox
-            print('------------------------------------------------>11111')
             gt_db = self._load_coco_keypoint_annotations()
         else:
             # use bbox from detection
-            print('------------------------------------------------>22222')
             gt_db = self._load_coco_person_detection_results()
         return gt_db
 
     def _load_coco_keypoint_annotations(self):
         """Ground truth bbox and keypoints."""
         gt_db = []
-        
-        print(f'--=====================================>{self.img_ids}')
-        
         for img_id in self.img_ids:
             gt_db.extend(self._load_coco_keypoint_annotation_kernel(img_id))
         return gt_db
@@ -136,6 +130,8 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
 
         ann_ids = self.coco.getAnnIds(imgIds=img_id, iscrowd=False)
         objs = self.coco.loadAnns(ann_ids)
+        
+        print('===============================================>{objs}')
 
         # sanitize bboxes
         valid_objs = []
