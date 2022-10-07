@@ -130,7 +130,8 @@ def imshow_keypoints(img,
             thickness (int): Thickness of lines.
     """
     
-    print(f'--------------------------------> {img}')
+    print(f'pose_kpt_color --------------------------------> {len(pose_kpt_color)}')
+    print(f'kpts --------------------------------> {len(kpts)}')
 
     img = mmcv.imread(img)
     img_h, img_w, _ = img.shape
