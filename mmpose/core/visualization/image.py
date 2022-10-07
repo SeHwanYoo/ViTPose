@@ -107,7 +107,7 @@ def imshow_bboxes(img,
 def imshow_keypoints(img,
                      pose_result,
                      skeleton=None,
-                     kpt_score_thr=0.3,
+                     kpt_score_thr=0.3,`
                      pose_kpt_color=None,
                      pose_link_color=None,
                      radius=4,
@@ -129,6 +129,8 @@ def imshow_keypoints(img,
                 links will not be drawn.
             thickness (int): Thickness of lines.
     """
+    
+    print(f'--------------------------------> {img}')
 
     img = mmcv.imread(img)
     img_h, img_w, _ = img.shape
