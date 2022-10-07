@@ -110,6 +110,9 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
     def _load_coco_keypoint_annotations(self):
         """Ground truth bbox and keypoints."""
         gt_db = []
+        
+        print(f'--=====================================>{self.img_ids}')
+        
         for img_id in self.img_ids:
             gt_db.extend(self._load_coco_keypoint_annotation_kernel(img_id))
         return gt_db
