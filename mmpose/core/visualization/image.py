@@ -131,7 +131,7 @@ def imshow_keypoints(img,
     """
     
     print(f'pose_kpt_color --------------------------------> {len(pose_kpt_color)}')
-    print(f'kpts --------------------------------> {len(kpts)}')
+    
 
     img = mmcv.imread(img)
     img_h, img_w, _ = img.shape
@@ -139,6 +139,8 @@ def imshow_keypoints(img,
     for kpts in pose_result:
 
         kpts = np.array(kpts, copy=False)
+        
+        print(f'kpts --------------------------------> {len(kpts)}')
 
         # draw each point on image
         if pose_kpt_color is not None:
