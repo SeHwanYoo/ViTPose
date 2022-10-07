@@ -130,12 +130,13 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
 
         ann_ids = self.coco.getAnnIds(imgIds=img_id, iscrowd=False)
         objs = self.coco.loadAnns(ann_ids)
-        
-        print('===============================================>{objs}')
 
         # sanitize bboxes
         valid_objs = []
         for obj in objs:
+            
+            print('===============================================>{obj}')
+            
             if 'bbox' not in obj:
                 continue
             x, y, w, h = obj['bbox']
