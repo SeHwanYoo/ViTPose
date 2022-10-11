@@ -127,6 +127,8 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
         width = img_ann['width']
         height = img_ann['height']
         num_joints = self.ann_info['num_joints']
+        
+        print(f'img_id=============================>{img_id}')
 
         ann_ids = self.coco.getAnnIds(imgIds=img_id, iscrowd=False)
         
