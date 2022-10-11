@@ -130,7 +130,7 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
         
         print(f'img_id=============================>{img_id}')
 
-        ann_ids = self.coco.getAnnIds(imgIds=img_id, iscrowd=False)
+        ann_ids = self.coco.getAnnIds(imgIds=img_id)
         
         print(f'ann_ids=============================>{ann_ids}')
         
