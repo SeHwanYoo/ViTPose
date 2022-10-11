@@ -128,17 +128,17 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
         height = img_ann['height']
         num_joints = self.ann_info['num_joints']
         
-        print(f'img_id=============================>{img_id}')
+        # print(f'img_id=============================>{img_id}')
 
         ann_ids = self.coco.getAnnIds(imgIds=img_id)
         
-        print(f'ann_ids=============================>{ann_ids}')
+        # print(f'ann_ids=============================>{ann_ids}')
         
         objs = self.coco.loadAnns(ann_ids)
         
-        print(f'===============================================>{len(objs)}')
+        # print(f'===============================================>{len(objs)}')
 
-        # sanitize bboxes
+        # #sanitize bboxes
         valid_objs = []
         for obj in objs:
             
@@ -152,10 +152,10 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
             x2 = min(width - 1, x1 + max(0, w - 1))
             y2 = min(height - 1, y1 + max(0, h - 1))
             
-            print(f'included false===>{"area" not in obj}')
-            print(f'area value ===>{obj["area"]}')
-            print(f'x2===>{x2}')
-            print(f'x1===>{x1}')
+            # print(f'included false===>{"area" not in obj}')
+            # print(f'area value ===>{obj["area"]}')
+            # print(f'x2===>{x2}')
+            # print(f'x1===>{x1}')
             
             if ('area' not in obj or obj['area'] > 0) and x2 > x1 and y2 > y1:
                 obj['clean_bbox'] = [x1, y1, x2 - x1, y2 - y1]
@@ -185,7 +185,7 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
 
             image_file = osp.join(self.img_prefix, self.id2name[img_id])
             
-            print(f'image_file====================================>{image_file}')
+            # print(f'image_file====================================>{image_file}')
             
             rec.append({
                 'image_file': image_file,
@@ -207,6 +207,9 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
         """Load coco person detection results."""
         num_joints = self.ann_info['num_joints']
         all_boxes = None
+        
+        print(f'bbox_file----------------------->{self.bbox_file}')
+        
         with open(self.bbox_file, 'r') as f:
             all_boxes = json.load(f)
 
@@ -223,10 +226,6 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
             
             print(f'img_prefix---->{self.img_prefix}')
             print(f'id2name---->{self.id2name}')
-            
-            if det_res["image_id"] in self.id2name:
-                print('--------------------------------------------!!!')
-            
             print(f'id2name---->{self.id2name[det_res["image_id"]]}')
 
             image_file = osp.join(self.img_prefix,
