@@ -129,6 +129,7 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
         num_joints = self.ann_info['num_joints']
 
         ann_ids = self.coco.getAnnIds(imgIds=img_id, iscrowd=False)
+        
         objs = self.coco.loadAnns(ann_ids)
         
         # print(f'===============================================>{len(objs)}')
@@ -170,6 +171,9 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
             center, scale = self._xywh2cs(*obj['clean_bbox'][:4])
 
             image_file = osp.join(self.img_prefix, self.id2name[img_id])
+            
+            print(f'image_file====================================>{image_file}')
+            
             rec.append({
                 'image_file': image_file,
                 'center': center,
