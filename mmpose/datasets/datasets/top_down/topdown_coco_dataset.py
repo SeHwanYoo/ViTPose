@@ -158,8 +158,8 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
                 valid_objs.append(obj)
         objs = valid_objs
         
-        print(f'===============================================>{len(objs)}')
-        print(f'===============================================>{objs}')
+        # print(f'===============================================>{len(objs)}')
+        # print(f'===============================================>{objs}')
 
         bbox_id = 0
         rec = []
