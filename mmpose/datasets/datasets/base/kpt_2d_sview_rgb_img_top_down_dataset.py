@@ -87,6 +87,9 @@ class Kpt2dSviewRgbImgTopDownDataset(Dataset, metaclass=ABCMeta):
 
         if coco_style:
             self.coco = COCO(ann_file)
+            print(f'self.coco.imgs ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {len(self.coco.imgs)}')
+            
+            
             if 'categories' in self.coco.dataset:
                 cats = [
                     cat['name']
