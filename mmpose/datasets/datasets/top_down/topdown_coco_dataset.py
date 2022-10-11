@@ -98,11 +98,9 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
         """Load dataset."""
         if (not self.test_mode) or self.use_gt_bbox:
             # use ground truth bbox
-            print('11111111111111111111111')
             gt_db = self._load_coco_keypoint_annotations()
         else:
             # use bbox from detection
-            print('11111111111111111111111222')
             gt_db = self._load_coco_person_detection_results()
         return gt_db
 
@@ -130,7 +128,7 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
         height = img_ann['height']
         num_joints = self.ann_info['num_joints']
 
-        ann_ids = self.coco.getAnnIds(imgIds=img_id, iscrowd=None)
+        ann_ids = self.coco.getAnnIds(imgIds=img_id, iscrowd=False)
         objs = self.coco.loadAnns(ann_ids)
         
         # print(f'===============================================>{len(objs)}')
