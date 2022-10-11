@@ -65,7 +65,7 @@ import shutil
 
 # cur_dir = os.path.dirname(os.path.abspath('openpose'))
 
-cur_dir = '/home/test/GM/openpose/'
+cur_dir = 'E:/22.9.21/GM/openpose'
 clients = ['jes', 'khb', 'ljh', 'njw']
 skeleton = [
     [1,2],[2,4],[4,3],[3,1], # Head
@@ -352,8 +352,10 @@ def preprocessing(data_dir, datalist_name='train', anno_id=0):
                     #     "size" : None
                     # },
                     "num_keypoints": num_keypoints,
-                    "area": None,
-                    "iscrowd": None,
+                    # "area": None,
+                    "area": data["size"]["height"] * data["size"]["width"],
+                    # "iscrowd": None,
+                    "iscrowd": 'false',
                     # "iscrowd": 0,
                     "keypoints": keypoints,
                     "image_id": id,
