@@ -81,6 +81,9 @@ class Kpt2dSviewRgbImgTopDownDataset(Dataset, metaclass=ABCMeta):
         self.ann_info['skeleton'] = dataset_info.skeleton
         self.sigmas = dataset_info.sigmas
         self.dataset_name = dataset_info.dataset_name
+        
+        print(f'coco_style ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {coco_style}')
+        print(f'ann_file ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {ann_file}')
 
         if coco_style:
             self.coco = COCO(ann_file)
