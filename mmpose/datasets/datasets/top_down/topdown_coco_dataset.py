@@ -220,6 +220,9 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
         for det_res in all_boxes:
             if det_res['category_id'] != 1:
                 continue
+            
+            print(f'---->{self.img_prefix}')
+            print(f'---->{self.id2name[det_res["image_id"]]}')
 
             image_file = osp.join(self.img_prefix,
                                   self.id2name[det_res['image_id']])
