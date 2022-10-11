@@ -146,10 +146,10 @@ test_pipeline = val_pipeline
 # data_root = 'data/coco'
 data_root = '/home/sehwan/datasets/GM'
 data = dict(
-    samples_per_gpu=32,
+    samples_per_gpu=16,
     workers_per_gpu=4,
-    val_dataloader=dict(samples_per_gpu=16),
-    test_dataloader=dict(samples_per_gpu=16),
+    val_dataloader=dict(samples_per_gpu=8),
+    test_dataloader=dict(samples_per_gpu=8),
     train=dict(
         type='TopDownCocoDataset',
         ann_file=f'{data_root}/annotations/train_baby_keypoints.json',
