@@ -225,7 +225,7 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
                 continue
             
             print(f'img_prefix---->{self.img_prefix}')
-            print(f'id2name---->{self.id2name}')
+            # print(f'id2name---->{self.id2name}')
             print(f'id2name---->{self.id2name[det_res["image_id"]]}')
 
             image_file = osp.join(self.img_prefix,
