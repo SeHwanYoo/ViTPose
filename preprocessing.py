@@ -6,6 +6,11 @@ import pandas as pd
 from glob import glob
 import random
 import shutil
+import matplotlib.pyplot as plt
+
+import imgaug as ia
+import imgaug.augmenters as iaa
+from imgaug.augmentables import Keypoint, KeypointsOnImage
 
 # Before
 # - node1: Head
@@ -64,7 +69,7 @@ import shutil
 
 
 # cur_dir = os.path.dirname(os.path.abspath('openpose'))
-
+seed_num = 18
 cur_dir = 'E:/22.9.21/GM/openpose'
 clients = ['jes', 'khb', 'ljh', 'njw']
 skeleton = [
@@ -242,6 +247,10 @@ def datalist_split(data, rate=0.1):
 def preprocessing(data_dir, datalist_name='train', anno_id=0):
     idx = 0
     coco = init_coco()
+    
+    height = 256 
+    width = 192 
+    
     for ann in data_dir:
 
         img = cv2.imread(ann.replace('ann', 'img').rstrip('.json'))
@@ -259,9 +268,21 @@ def preprocessing(data_dir, datalist_name='train', anno_id=0):
 
             classTitle = obj["classTitle"]
             if classTitle == "GM_Left":
-                category_id = 1
+                # category_id = 1
+                
+                seq = iaa.Sequential([iaa.PadToSquare(position ='center', random_state=seed_num),
+                                      iaa.CenterCropToAspectRatio(1.0),
+                                      iaa.Affine(rotate=90),
+                                      iaa.Resize({"height": height, "width": width})
+                                      ])          
+                
             elif classTitle == "GM_Right":
-                category_id = 2
+                # category_id = 2
+                seq = iaa.Sequential([iaa.PadToSquare(position ='center', random_state=seed_num),
+                                      iaa.CenterCropToAspectRatio(1.0),
+                                      iaa.Affine(rotate=270),    
+                                      iaa.Resize({"height": height, "width": width})
+                                      ])
             else:
                 continue
 
@@ -309,7 +330,8 @@ def preprocessing(data_dir, datalist_name='train', anno_id=0):
                     keypointsX.append(point_x)
                     keypointsY.append(point_y)
 
-                    keypoints.extend([point_x, point_y])
+                    # keypoints.extend([point_x, point_y])
+                    keypoints.append((int(point_x), int(point_y)))
                     """
                     Annotations for keypoints is specified in (x, y, v)
                     v indicates visibility
@@ -318,25 +340,55 @@ def preprocessing(data_dir, datalist_name='train', anno_id=0):
                     v=2: labeled and visible
                     """
 
-                    keypoints.append(2)
+                    # keypoints.append(2)
                     
             except KeyError:
                 continue
-
+            
             xmin = min(keypointsX)
             xmax = max(keypointsX)
             ymin = min(keypointsY)
             ymax = max(keypointsY)
 
+            # bbox = [xmin, xmax, ymin, ymax] 
             bbox = find_bbox(img, [xmin, xmax, ymin, ymax]) 
 
+            # img_norm, keypoints_norm, bbox_norm = seq(image=img, keypoints=keypoints, bounding_boxes=tuple(map(float, bbox)))
+            img_norm, keypoints_norm = seq(image=img, keypoints=keypoints)
+            
+            keypoints = [] 
+            keypointsX = []
+            keypointsY = []
+            for key in keypoints_norm:
+                key = list(map(float, key))
+                
+                # print('=' * 20)
+                # print(key)
+                # print('=' * 20)
+                
+                keypoints.extend([key[0], key[1]])
+                keypointsX.append(key[0])
+                keypointsY.append(key[1])
+    
+            # bbox = list(map(float, bbox_norm))
+            
+            xmin = min(keypointsX)
+            xmax = max(keypointsX)
+            ymin = min(keypointsY)
+            ymax = max(keypointsY)
+
+            bbox = find_bbox(img_norm, [xmin, xmax, ymin, ymax]) 
+
+
             coco["images"].append(
-                {
+                {   
                     "license": None,
                     "file_name": file_name,
                     "coco_url": None,
-                    "height": data["size"]["height"],
-                    "width": data["size"]["width"],
+                    # "height": data["size"]["height"],
+                    # "width": data["size"]["width"],
+                    "height" : height, 
+                    "width" : width, 
                     "date_captured": obj["createdAt"],
                     "flickr_url": None,
                     # "id": idx
@@ -379,11 +431,14 @@ def preprocessing(data_dir, datalist_name='train', anno_id=0):
                 os.mkdir(os.path.join(cur_dir, 'custom_dataset/annotated images', datalist_name))
 
 
-            cv2.imwrite(os.path.join(cur_dir, 'custom_dataset/images', datalist_name, file_name), img)
-            cv2.rectangle(img, (bbox[0],bbox[1]), (bbox[0]+bbox[2],bbox[1]+bbox[3]), (0,255,0), 3)
+            # cv2.imwrite(os.path.join(cur_dir, 'custom_dataset/images', datalist_name, file_name), img)
+            cv2.imwrite(os.path.join(cur_dir, 'custom_dataset/images', datalist_name, file_name), img_norm)
+            cv2.rectangle(img_norm, (bbox[0],bbox[1]), (bbox[0]+bbox[2],bbox[1]+bbox[3]), (0,255,0), 3)
+            # cv2.rectangle(img_norm, (bbox_norm[0],bbox_norm[1]), (bbox_norm[0]+bbox_norm[2],bbox_norm[1]+bbox_norm[3]), (0,255,0), 3)
+            
             for start, end in skeleton:
-                cv2.line(img, (keypointsX[start-1], keypointsY[start-1]), (keypointsX[end-1], keypointsY[end-1]), (255,0,0), 3)
-            cv2.imwrite(os.path.join(cur_dir, 'custom_dataset/annotated images', datalist_name, file_name), img)
+                cv2.line(img_norm, (keypointsX[start-1], keypointsY[start-1]), (keypointsX[end-1], keypointsY[end-1]), (255,0,0), 3)
+            cv2.imwrite(os.path.join(cur_dir, 'custom_dataset/annotated images', datalist_name, file_name), img_norm)
 
         idx += 1
 
