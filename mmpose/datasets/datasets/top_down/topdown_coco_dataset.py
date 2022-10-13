@@ -405,9 +405,18 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
         return cat_results
 
     def _do_python_keypoint_eval(self, res_file):
+        
+        print(f'res_file ------------------------->{res_file}')
+        
         """Keypoint evaluation using COCOAPI."""
         coco_det = self.coco.loadRes(res_file)
+        
+        print(f'coco_det ------------------------->{res_file}')
+        
         coco_eval = COCOeval(self.coco, coco_det, 'keypoints', self.sigmas)
+        
+        print(f'self.coco ------------------------->{self.coco}')
+        
         coco_eval.params.useSegm = None
         coco_eval.evaluate()
         coco_eval.accumulate()
