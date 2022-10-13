@@ -367,6 +367,8 @@ def preprocessing(data_dir, datalist_name='train', anno_id=0):
                 # print('=' * 20)
                 
                 keypoints.extend([key[0], key[1]])
+                keypoints.append(2)
+                
                 keypointsX.append(key[0])
                 keypointsY.append(key[1])
     
