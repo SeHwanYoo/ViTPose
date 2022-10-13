@@ -229,7 +229,8 @@ cfg.channel_cfg.inference_channel = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1
 
 # set basic configs
 cfg.data_root = '/home/sehwan/datasets/GM'
-cfg.work_dir = 'work_dirs/hrnet_w32_coco_tiny_256x192'
+# cfg.work_dir = 'work_dirs/hrnet_w32_coco_tiny_256x192'
+cfg.work_dir = 'outputs'
 cfg.gpu_ids = range(1)
 cfg.seed = 0
 
