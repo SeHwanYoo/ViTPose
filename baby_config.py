@@ -1,4 +1,7 @@
 from mmcv import Config
+import baby_dataset 
+
+
 cfg = Config.fromfile(
     './configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/hrnet_w32_coco_256x192.py'
 )
