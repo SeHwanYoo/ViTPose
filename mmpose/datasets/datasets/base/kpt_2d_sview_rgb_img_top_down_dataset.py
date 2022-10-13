@@ -71,8 +71,15 @@ class Kpt2dSviewRgbImgTopDownDataset(Dataset, metaclass=ABCMeta):
                 'for details.')
 
         dataset_info = DatasetInfo(dataset_info)
+        
+        print(f"self.ann_info -------------->{self.ann_info['num_joints']}")
+        print(f"dataset_info.keypoint_num -------------->{dataset_info.keypoint_num}")
 
         assert self.ann_info['num_joints'] == dataset_info.keypoint_num
+        
+        
+        
+        
         self.ann_info['flip_pairs'] = dataset_info.flip_pairs
         self.ann_info['flip_index'] = dataset_info.flip_index
         self.ann_info['upper_body_ids'] = dataset_info.upper_body_ids
