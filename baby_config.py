@@ -45,6 +45,7 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 		self.ann_info['use_different_joint_weights'] = False
   
 		# self.ann_info['num_joints'] = 21
+  		data_cfg['num_joints'] = 21
 
 		self.dataset_name = 'coco_tiny'
 		self.db = self._get_db()
@@ -64,9 +65,6 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 			keypoints = np.array(
 				ann['keypoints'], dtype=np.float32).reshape(-1, 3)
 			num_joints = keypoints.shape[0]
-   
-			print(f'num_joints=======================>>> {num_joints}')
-   
 			joints_3d = np.zeros((num_joints, 3), dtype=np.float32)
 			joints_3d[:, :2] = keypoints[:, :2]
 			joints_3d_visible = np.zeros((num_joints, 3), dtype=np.float32)
