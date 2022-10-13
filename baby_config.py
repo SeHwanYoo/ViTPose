@@ -53,17 +53,12 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 	def _get_db(self):
 		with open(self.ann_file) as f:
 			anns = json.load(f)
-   
-		print(f'ann_file============>{self.ann_file}')
 
 		db = []
 		for idx, ann in enumerate(anns):
       
-			print(f'self.img_prefix ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {self.img_prefix}')
-			# print(f"ann ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", ann['file_name'])
-   
+			print(f'ann -> {ann}')
       
-			# get image path
 			image_file = osp.join(self.img_prefix, ann['file_name'])
 			# get bbox
 			bbox = ann['bbox']
