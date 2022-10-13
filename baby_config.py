@@ -57,6 +57,9 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 		db = []
 		for idx, ann in enumerate(anns):
 			# get image path
+   
+			print(f"image_file=================>{ann['image_file']}")
+   
 			image_file = osp.join(self.img_prefix, ann['image_file'])
 			# get bbox
 			bbox = ann['bbox']
