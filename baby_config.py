@@ -64,6 +64,9 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 			keypoints = np.array(
 				ann['keypoints'], dtype=np.float32).reshape(-1, 3)
 			num_joints = keypoints.shape[0]
+   
+			print(f'num_joints=======================>>> {num_joints}')
+   
 			joints_3d = np.zeros((num_joints, 3), dtype=np.float32)
 			joints_3d[:, :2] = keypoints[:, :2]
 			joints_3d_visible = np.zeros((num_joints, 3), dtype=np.float32)
