@@ -44,7 +44,7 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 		self.ann_info['joint_weights'] = None
 		self.ann_info['use_different_joint_weights'] = False
   
-		self.ann_info['num_joints'] = 21
+		# self.ann_info['num_joints'] = 21
 
 		self.dataset_name = 'coco_tiny'
 		self.db = self._get_db()
