@@ -257,14 +257,14 @@ cfg.data.test_dataloader = dict(samples_per_gpu=16)
 
 
 # set dataset configs
-cfg.data.train.type = 'TopDownCOCOTinyDataset'
+# cfg.data.train.type = 'TopDownCOCOTinyDataset'
 cfg.data.train.ann_file = f'{cfg.data_root}/annotations/train_baby_keypoints.json'
 cfg.data.train.img_prefix = f'{cfg.data_root}/images/train/'
 
-cfg.data.val.type = 'TopDownCOCOTinyDataset'
+# cfg.data.val.type = 'TopDownCOCOTinyDataset'
 cfg.data.val.ann_file = f'{cfg.data_root}/annotations/valid_baby_keypoints.json'
 cfg.data.val.img_prefix = f'{cfg.data_root}/images/valid/'
 
-cfg.data.test.type = 'TopDownCOCOTinyDataset'
+# cfg.data.test.type = 'TopDownCOCOTinyDataset'
 cfg.data.test.ann_file = f'{cfg.data_root}/annotations/test_baby_keypoints.json'
 cfg.data.test.img_prefix = f'{cfg.data_root}/images/test/'
