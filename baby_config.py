@@ -55,7 +55,7 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 			anns = json.load(f)
    
 		print('=' * 20)
-		print(anns)
+		print(self.ann_file)
 		print('=' * 20)
 
 		db = []
