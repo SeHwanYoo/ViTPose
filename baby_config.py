@@ -14,7 +14,7 @@ from mmpose.core.evaluation.top_down_eval import (keypoint_nme,
 from mmpose.datasets.builder import DATASETS
 from mmpose.datasets.datasets.base import Kpt2dSviewRgbImgTopDownDataset
 from mmcv import Config
-
+@DATASETS.register_module()
 class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 	
 	def __init__(self,
