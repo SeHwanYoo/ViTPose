@@ -54,7 +54,7 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 		with open(self.ann_file) as f:
 			anns = json.load(f)
    
-		print(f"anns=================>{anns}")
+		print(f'ann_file============>{self.ann_file}')
 
 		db = []
 		for idx, ann in enumerate(anns):
