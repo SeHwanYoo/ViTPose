@@ -38,7 +38,7 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 										[14,15],[15,16],[16,17], # Right leg
 										[18,19],[19,20],[20,21] # Left leg
         ]
-		self.ann_info['upper_body_ids'] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+		self.ann_info['upper_body_ids'] = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
 		self.ann_info['lower_body_ids'] = (13, 14, 15, 16, 17, 18, 19, 20, 21)
 
 		self.ann_info['joint_weights'] = None
