@@ -48,7 +48,7 @@ class Kpt2dSviewRgbImgTopDownDataset(Dataset, metaclass=ABCMeta):
         self.ann_info = {}
         
         print(f'img_prefix ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {img_prefix}')
-        print(f'data_cfg ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {data_cfg}')
+        print(f'data_cfg ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {data_cfg["lower_body_ids"]}')
 
         self.ann_file = ann_file
         self.img_prefix = img_prefix
