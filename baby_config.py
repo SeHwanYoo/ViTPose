@@ -60,7 +60,7 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 		for idx, ann in enumerate(anns):
       
 			print(f'self.img_prefix ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {self.img_prefix}')
-			print(f"ann ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", ann['file_name'])
+			# print(f"ann ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", ann['file_name'])
    
       
 			# get image path
