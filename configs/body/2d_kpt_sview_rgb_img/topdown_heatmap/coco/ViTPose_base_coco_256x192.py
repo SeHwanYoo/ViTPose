@@ -30,8 +30,8 @@ lr_config = dict(
 total_epochs = 210
 target_type = 'GaussianHeatmap'
 channel_cfg = dict(
-    num_output_channels=21,
-    dataset_joints=21,
+    num_output_channels=22,
+    dataset_joints=22,
     dataset_channel=[
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
     ],
