@@ -6,7 +6,7 @@ import cv2
 import sys 
 
 # sys.path.append('../')
-import mmcv
+# i/mport mmcv
 from mmcv import Config
 
 # local_runtime = False
@@ -16,7 +16,6 @@ from mmcv import Config
 #   local_runtime = True
 
 cfg = Config.fromfile(
-    # './configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/hrnet_w32_coco_256x192.py'
     './configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/ViTPose_base_coco_256x192.py'
 )
 
