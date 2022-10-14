@@ -1,11 +1,11 @@
-import mmcv
-from mmcv import Config
-
 from mmpose.apis import (inference_top_down_pose_model, init_pose_model,
                          vis_pose_result, process_mmdet_results)
 from mmdet.apis import inference_detector, init_detector
-
 import cv2
+
+
+import ..mmcv
+from ..mmcv import Config
 
 # local_runtime = False
 # try:
