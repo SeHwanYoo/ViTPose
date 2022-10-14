@@ -3,9 +3,10 @@ from mmpose.apis import (inference_top_down_pose_model, init_pose_model,
 from mmdet.apis import inference_detector, init_detector
 import cv2
 
-
-import ..mmcv
-from ..mmcv import Config
+import sys 
+sys.path.append('../')
+import mmcv
+from mmcv import Config
 
 # local_runtime = False
 # try:
