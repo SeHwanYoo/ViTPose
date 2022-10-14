@@ -164,9 +164,6 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
 				obj['clean_bbox'] = [x1, y1, x2 - x1, y2 - y1]
 				valid_objs.append(obj)
 		objs = valid_objs
-		
-		# print(f'===============================================>{len(objs)}')
-		# print(f'===============================================>{objs}')
 
 		bbox_id = 0
 		rec = []
@@ -179,9 +176,6 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
 				continue
 			joints_3d = np.zeros((num_joints, 3), dtype=np.float32)
 			joints_3d_visible = np.zeros((num_joints, 3), dtype=np.float32)
-   
-			print(f"keypoints===========================================>{obj['keypoints']}")
-
 			keypoints = np.array(obj['keypoints']).reshape(-1, 3)
 			joints_3d[:, :2] = keypoints[:, :2]
 			joints_3d_visible[:, :2] = np.minimum(1, keypoints[:, 2:3])
