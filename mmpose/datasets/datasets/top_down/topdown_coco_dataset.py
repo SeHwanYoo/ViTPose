@@ -355,9 +355,11 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
 
 		self._write_coco_keypoint_results(valid_kpts, res_file)
 
+		print()
 		print('-' * 100)
 		info_str = self._do_python_keypoint_eval(res_file)
 		print('=' * 100)
+		print() 
 		name_value = OrderedDict(info_str)
 
 		if tmp_folder is not None:
