@@ -179,6 +179,8 @@ class TopDownCocoDataset(Kpt2dSviewRgbImgTopDownDataset):
 				continue
 			joints_3d = np.zeros((num_joints, 3), dtype=np.float32)
 			joints_3d_visible = np.zeros((num_joints, 3), dtype=np.float32)
+   
+			print(f"keypoints===========================================>{obj['keypoints']}")
 
 			keypoints = np.array(obj['keypoints']).reshape(-1, 3)
 			joints_3d[:, :2] = keypoints[:, :2]
