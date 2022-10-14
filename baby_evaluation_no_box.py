@@ -33,50 +33,50 @@ def main():
 
     Using mmdet to detect the human.
     """
-    parser = ArgumentParser()
-    parser.add_argument('det_config', help='Config file for detection')
-    parser.add_argument('det_checkpoint', help='Checkpoint file for detection')
-    parser.add_argument('pose_config', help='Config file for pose')
-    parser.add_argument('pose_checkpoint', help='Checkpoint file for pose')
-    parser.add_argument('--img-root', type=str, default='', help='Image root')
-    parser.add_argument('--img', type=str, default='', help='Image file')
-    parser.add_argument(
-        '--show',
-        action='store_true',
-        default=False,
-        help='whether to show img')
-    parser.add_argument(
-        '--out-img-root',
-        type=str,
-        default='',
-        help='root of the output img file. '
-        'Default not saving the visualization images.')
-    parser.add_argument(
-        '--device', default='cuda:0', help='Device used for inference')
-    parser.add_argument(
-        '--det-cat-id',
-        type=int,
-        default=1,
-        help='Category id for bounding box detection model')
-    parser.add_argument(
-        '--bbox-thr',
-        type=float,
-        default=0.3,
-        help='Bounding box score threshold')
-    parser.add_argument(
-        '--kpt-thr', type=float, default=0.3, help='Keypoint score threshold')
-    parser.add_argument(
-        '--radius',
-        type=int,
-        default=4,
-        help='Keypoint radius for visualization')
-    parser.add_argument(
-        '--thickness',
-        type=int,
-        default=1,
-        help='Link thickness for visualization')
+    # parser = ArgumentParser()
+    # parser.add_argument('det_config', help='Config file for detection')
+    # parser.add_argument('det_checkpoint', help='Checkpoint file for detection')
+    # parser.add_argument('pose_config', help='Config file for pose')
+    # parser.add_argument('pose_checkpoint', help='Checkpoint file for pose')
+    # parser.add_argument('--img-root', type=str, default='', help='Image root')
+    # parser.add_argument('--img', type=str, default='', help='Image file')
+    # parser.add_argument(
+    #     '--show',
+    #     action='store_true',
+    #     default=False,
+    #     help='whether to show img')
+    # parser.add_argument(
+    #     '--out-img-root',
+    #     type=str,
+    #     default='',
+    #     help='root of the output img file. '
+    #     'Default not saving the visualization images.')
+    # parser.add_argument(
+    #     '--device', default='cuda:0', help='Device used for inference')
+    # parser.add_argument(
+    #     '--det-cat-id',
+    #     type=int,
+    #     default=1,
+    #     help='Category id for bounding box detection model')
+    # parser.add_argument(
+    #     '--bbox-thr',
+    #     type=float,
+    #     default=0.3,
+    #     help='Bounding box score threshold')
+    # parser.add_argument(
+    #     '--kpt-thr', type=float, default=0.3, help='Keypoint score threshold')
+    # parser.add_argument(
+    #     '--radius',
+    #     type=int,
+    #     default=4,
+    #     help='Keypoint radius for visualization')
+    # parser.add_argument(
+    #     '--thickness',
+    #     type=int,
+    #     default=1,
+    #     help='Link thickness for visualization')
 
-    assert has_mmdet, 'Please install mmdet to run the demo.'
+    # assert has_mmdet, 'Please install mmdet to run the demo.'
 
     # args = parser.parse_args()
 
