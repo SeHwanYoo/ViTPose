@@ -5,12 +5,12 @@ from argparse import ArgumentParser
 from mmpose.apis import (inference_top_down_pose_model, init_pose_model,
                          process_mmdet_results, vis_pose_result)
 from mmpose.datasets import DatasetInfo
-
-try:
-    from mmdet.apis import inference_detector, init_detector
-    has_mmdet = True
-except (ImportError, ModuleNotFoundError):
-    has_mmdet = False
+from mmdet.apis import inference_detector, init_detector
+# try:
+#     from mmdet.apis import inference_detector, init_detector
+#     has_mmdet = True
+# except (ImportError, ModuleNotFoundError):
+#     has_mmdet = False
     
 pose_config = 'configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/ViTPose_base_coco_256x192.py'
 det_config = 'demo/mmdetection_cfg/faster_rcnn_r50_fpn_coco.py'
