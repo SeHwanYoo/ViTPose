@@ -4,7 +4,8 @@ from mmdet.apis import inference_detector, init_detector
 import cv2
 
 import sys 
-sys.path.append('../')
+
+# sys.path.append('../')
 import mmcv
 from mmcv import Config
 
