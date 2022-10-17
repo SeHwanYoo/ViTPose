@@ -405,7 +405,7 @@ def preprocessing(data_dir, datalist_name='train', anno_id=0):
                     #     "counts" : None, 
                     #     "size" : None
                     # },
-                    "num_keypoints": num_keypoints,
+                    "num_keypoints": [],
                     # "area": None,
                     "area": data["size"]["height"] * data["size"]["width"],
                     # "iscrowd": None,
@@ -508,7 +508,7 @@ for c in clients:
     # print(f'valid -----------> {len(valid_list)}')
 
 # preprocessing
-anno_id = preprocessing(train_list, 'train', anno_id)
-anno_id = preprocessing(valid_list, 'valid', anno_id)
+# anno_id = preprocessing(train_list, 'train', anno_id)
+# anno_id = preprocessing(valid_list, 'valid', anno_id)
 anno_id = preprocessing(test_list, 'test', anno_id)
 

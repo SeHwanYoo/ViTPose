@@ -110,6 +110,8 @@ def main():
             dataset_info=dataset_info,
             return_heatmap=return_heatmap,
             outputs=output_layer_names)
+        
+        print(f'pose_results--------------------------->{pose_results}')
 
         if out_img_root == '':
             out_file = None
