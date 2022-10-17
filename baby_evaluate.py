@@ -115,11 +115,11 @@ def main():
             outputs=output_layer_names)
         
         # image['file_name']
-        print(f'pose_results--------------------------->{type(pose_results)}')
-        raise TypeError('STOP')
+        # print(f'pose_results--------------------------->{type(pose_results)}')
+        # raise TypeError('STOP')
         # results_output['file_name']
-        # results_output['file_name'].append(image['file_name'])
-        # results_output['keypoints'].append(pose_results['keypoints'])
+        results_output['file_name'].append(image['file_name'])
+        results_output['keypoints'].append(pose_results)
 
         if out_img_root == '':
             out_file = None
@@ -141,7 +141,7 @@ def main():
         
     with open(os.path.join(out_img_root, 'result_keypoints.txt'), 'w') as f:
         for key, val in results_output.items():
-            f.write(f"file_name : {val['file_name']} and keypoints : {val['keypoints']}")
+            f.write(val) 
 
 
 if __name__ == '__main__':
