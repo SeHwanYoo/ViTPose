@@ -125,7 +125,7 @@ def main():
             outputs=output_layer_names)
         
         result_name.append(image['file_name'])
-        result_id.append(image['id'])
+        result_id.append(str(image['id']))
         result_head.append(str(pose_results[0]['keypoints'][0][0]) + ', ' + str(pose_results[0]['keypoints'][0][1]))
         result_eye_r.append(str(pose_results[0]['keypoints'][1][0]) + ', ' + str(pose_results[0]['keypoints'][1][1]))
         result_eye_l.append(str(pose_results[0]['keypoints'][2][0]) + ', ' + str(pose_results[0]['keypoints'][2][1]))
