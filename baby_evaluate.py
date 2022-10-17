@@ -82,69 +82,79 @@ def main():
     # e.g. use ('backbone', ) to return backbone feature
     output_layer_names = None
     
-    results_output = {'file_name' : [], 
-                      'keypoints' : []}
+    # results_output = {'file_name' : [], 
+    #                   'id' : [], 
+    #                   'eye_r' : [],
+    #                   'eye_l' : [],
+    #                   'neck' : []}
+    result_name = []
+    result_id = []
+    result_head = []
+    result_eye_r = []
+    result_eye_l = []
+    result_neck = []
 
     # process each image
-    with open(os.path.join(out_img_root, 'result_keypoints.txt'), 'w') as f:
-        for i in range(len(img_keys)):
-            # get bounding box annotations
-            image_id = img_keys[i]
-            image = coco.loadImgs(image_id)[0]
-            image_name = os.path.join(img_root, image['file_name'])
-            ann_ids = coco.getAnnIds(image_id)
-
-            # make person bounding boxes
-            person_results = []
-            for ann_id in ann_ids:
-                person = {}
-                ann = coco.anns[ann_id]
-                # bbox format is 'xywh'
-                person['bbox'] = ann['bbox']
-                person_results.append(person)
-
-            # test a single image, with a list of bboxes
-            pose_results, returned_outputs = inference_top_down_pose_model(
-                pose_model,
-                image_name,
-                person_results,
-                bbox_thr=None,
-                format='xywh',
-                dataset=dataset,
-                dataset_info=dataset_info,
-                return_heatmap=return_heatmap,
-                outputs=output_layer_names)
-            
-            # image['file_name']
-            # print(f'pose_results--------------------------->{type(pose_results)}')
-            # raise TypeError('STOP')
-            # results_output['file_name']
-            # results_output['file_name'].append(image['file_name'])
-            # results_output['keypoints'].append(pose_results)
-            
-            f.write(image['file_name'] + ' : [' + str(pose_results[0]['keypoints'][0][0]) + ', ' + str(pose_results[0]['keypoints'][0][1]) + ']')
-
-            if out_img_root == '':
-                out_file = None
-            else:
-                os.makedirs(out_img_root, exist_ok=True)
-                out_file = os.path.join(out_img_root, f'vis_{i}.jpg')
-
-            vis_pose_result(
-                pose_model,
-                image_name,
-                pose_results,
-                dataset=dataset,
-                dataset_info=dataset_info,
-                kpt_score_thr=0,
-                # radius=args.radius,
-                # thickness=args.thickness,
-                show=False, 
-                out_file=out_file)
-        
     # with open(os.path.join(out_img_root, 'result_keypoints.txt'), 'w') as f:
-    #     for key, val in results_output.items():
-    #         f.write(val) 
+    for i in range(len(img_keys)):
+        # get bounding box annotations
+        image_id = img_keys[i]
+        image = coco.loadImgs(image_id)[0]
+        image_name = os.path.join(img_root, image['file_name'])
+        ann_ids = coco.getAnnIds(image_id)
+
+        # make person bounding boxes
+        person_results = []
+        for ann_id in ann_ids:
+            person = {}
+            ann = coco.anns[ann_id]
+            # bbox format is 'xywh'
+            person['bbox'] = ann['bbox']
+            person_results.append(person)
+
+        # test a single image, with a list of bboxes
+        pose_results, returned_outputs = inference_top_down_pose_model(
+            pose_model,
+            image_name,
+            person_results,
+            bbox_thr=None,
+            format='xywh',
+            dataset=dataset,
+            dataset_info=dataset_info,
+            return_heatmap=return_heatmap,
+            outputs=output_layer_names)
+        
+        result_name.append(image['file_name'])
+        result_id.append(image['id'])
+        result_head.append(str(pose_results[0]['keypoints'][0][0]) + ', ' + str(pose_results[0]['keypoints'][0][1]))
+        result_eye_r.append(str(pose_results[0]['keypoints'][1][0]) + ', ' + str(pose_results[0]['keypoints'][1][1]))
+        result_eye_l.append(str(pose_results[0]['keypoints'][2][0]) + ', ' + str(pose_results[0]['keypoints'][2][1]))
+        result_neck.append(str(pose_results[0]['keypoints'][3][0]) + ', ' + str(pose_results[0]['keypoints'][3][1]))
+
+        if out_img_root == '':
+            out_file = None
+        else:
+            os.makedirs(out_img_root, exist_ok=True)
+            out_file = os.path.join(out_img_root, f'vis_{i}.jpg')
+
+        vis_pose_result(
+            pose_model,
+            image_name,
+            pose_results,
+            dataset=dataset,
+            dataset_info=dataset_info,
+            kpt_score_thr=0,
+            # radius=args.radius,
+            # thickness=args.thickness,
+            show=False, 
+            out_file=out_file)
+        
+    with open(os.path.join(out_img_root, 'result_keypoints.txt'), 'w') as f:
+        for i in range(len(result_name)):
+            
+            str = result_name[i] + result_id[i] + result_head[i] + result_eye_r[i] + result_eye_l[i] + result_neck[i]
+            
+            f.write(str)
 
 
 if __name__ == '__main__':
