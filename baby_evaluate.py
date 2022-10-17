@@ -115,7 +115,8 @@ def main():
             outputs=output_layer_names)
         
         # image['file_name']
-        print(f'pose_results--------------------------->{pose_results["keypoints"]}')
+        print(f'pose_results--------------------------->{type(pose_results)}')
+        raise TypeError('STOP')
         # results_output['file_name']
         # results_output['file_name'].append(image['file_name'])
         # results_output['keypoints'].append(pose_results['keypoints'])
