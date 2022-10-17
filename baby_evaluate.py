@@ -122,7 +122,7 @@ def main():
             # results_output['file_name'].append(image['file_name'])
             # results_output['keypoints'].append(pose_results)
             
-            f.write(image['file_name'] + ' : ' + pose_results)
+            f.write(image['file_name'] + ' : ' + pose_results[0]['keypoints'])
 
             if out_img_root == '':
                 out_file = None
