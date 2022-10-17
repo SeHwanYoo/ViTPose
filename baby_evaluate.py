@@ -152,9 +152,9 @@ def main():
     with open(os.path.join(out_img_root, 'result_keypoints.txt'), 'w') as f:
         for i in range(len(result_name)):
             
-            str = result_name[i] + result_id[i] + result_head[i] + result_eye_r[i] + result_eye_l[i] + result_neck[i]
+            ff_write = result_name[i] + result_id[i] + result_head[i] + result_eye_r[i] + result_eye_l[i] + result_neck[i]
             
-            f.write(str)
+            f.write(ff_write)
 
 
 if __name__ == '__main__':
