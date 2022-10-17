@@ -126,10 +126,10 @@ def main():
         
         result_name.append(image['file_name'])
         result_id.append(str(image['id']))
-        result_head.append(str(pose_results[0]['keypoints'][0][0]) + ', ' + str(pose_results[0]['keypoints'][0][1]))
-        result_eye_r.append(str(pose_results[0]['keypoints'][1][0]) + ', ' + str(pose_results[0]['keypoints'][1][1]))
-        result_eye_l.append(str(pose_results[0]['keypoints'][2][0]) + ', ' + str(pose_results[0]['keypoints'][2][1]))
-        result_neck.append(str(pose_results[0]['keypoints'][3][0]) + ', ' + str(pose_results[0]['keypoints'][3][1]))
+        result_head.append('[' + str(pose_results[0]['keypoints'][0][0]) + ', ' + str(pose_results[0]['keypoints'][0][1]) + ']')
+        result_eye_r.append('[' + str(pose_results[0]['keypoints'][1][0]) + ', ' + str(pose_results[0]['keypoints'][1][1]) + ']')
+        result_eye_l.append('[' + str(pose_results[0]['keypoints'][2][0]) + ', ' + str(pose_results[0]['keypoints'][2][1]) + ']')
+        result_neck.append('[' + str(pose_results[0]['keypoints'][3][0]) + ', ' + str(pose_results[0]['keypoints'][3][1]) + ']')
 
         if out_img_root == '':
             out_file = None
@@ -152,7 +152,7 @@ def main():
     with open(os.path.join(out_img_root, 'result_keypoints.txt'), 'w') as f:
         for i in range(len(result_name)):
             
-            ff_write = result_name[i] + result_id[i] + result_head[i] + result_eye_r[i] + result_eye_l[i] + result_neck[i] + '\n'
+            ff_write = result_name[i] + ' ' + result_id[i] + ' ' + result_head[i] + ' ' + result_eye_r[i] + ' ' + result_eye_l[i] + ' ' + result_neck[i] + '\n'
             
             f.write(ff_write)
 
