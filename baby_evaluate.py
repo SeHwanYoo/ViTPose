@@ -115,10 +115,10 @@ def main():
             outputs=output_layer_names)
         
         # image['file_name']
-        # print(f'pose_results--------------------------->{pose_results}')
+        print(f'pose_results--------------------------->{pose_results["keypoints"]}')
         # results_output['file_name']
-        results_output['file_name'].append(image['file_name'])
-        results_output['keypoints'].append(pose_results['keypoints'])
+        # results_output['file_name'].append(image['file_name'])
+        # results_output['keypoints'].append(pose_results['keypoints'])
 
         if out_img_root == '':
             out_file = None
