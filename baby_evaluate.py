@@ -81,6 +81,9 @@ def main():
 
     # e.g. use ('backbone', ) to return backbone feature
     output_layer_names = None
+    
+    results_output = {'file_name' : [], 
+                      'keypoints' : []}
 
     # process each image
     for i in range(len(img_keys)):
@@ -111,7 +114,11 @@ def main():
             return_heatmap=return_heatmap,
             outputs=output_layer_names)
         
-        print(f'pose_results--------------------------->{pose_results}')
+        # image['file_name']
+        # print(f'pose_results--------------------------->{pose_results}')
+        # results_output['file_name']
+        results_output['file_name'].append(image['file_name'])
+        results_output['keypoints'].append(pose_results['keypoints'])
 
         if out_img_root == '':
             out_file = None
@@ -130,6 +137,10 @@ def main():
             # thickness=args.thickness,
             show=False, 
             out_file=out_file)
+        
+    with open(os.path.join(out_img_root, 'result_keypoints.txt'), 'w') as f:
+        for key, val in results_output.items():
+            f.write(f"file_name : {val['file_name']} and keypoints : {val['keypoints']}")
 
 
 if __name__ == '__main__':
