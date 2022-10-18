@@ -7,6 +7,7 @@ from xtcocotools.coco import COCO
 
 from mmpose.apis import (inference_top_down_pose_model, init_pose_model,
                          vis_pose_result)
+
 from mmpose.datasets import DatasetInfo
 
 pose_config = 'configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/ViTPose_base_coco_256x192.py'
@@ -17,48 +18,6 @@ img_root = '../../datasets/GM/images/test'
 out_img_root = 'evaluation' 
 
 def main():
-    """Visualize the demo images.
-
-    Require the json_file containing boxes.
-    """
-    # parser = ArgumentParser()
-    # parser.add_argument('pose_config', help='Config file for detection')
-    # parser.add_argument('pose_checkpoint', help='Checkpoint file')
-    # parser.add_argument('--img-root', type=str, default='', help='Image root')
-    # parser.add_argument(
-    #     '--json-file',
-    #     type=str,
-    #     default='',
-    #     help='Json file containing image info.')
-    # parser.add_argument(
-    #     '--show',
-    #     action='store_true',
-    #     default=False,
-    #     help='whether to show img')
-    # parser.add_argument(
-    #     '--out-img-root',
-    #     type=str,
-    #     default='',
-    #     help='Root of the output img file. '
-    #     'Default not saving the visualization images.')
-    # parser.add_argument(
-    #     '--device', default='cuda:0', help='Device used for inference')
-    # parser.add_argument(
-    #     '--kpt-thr', type=float, default=0.3, help='Keypoint score threshold')
-    # parser.add_argument(
-    #     '--radius',
-    #     type=int,
-    #     default=4,
-    #     help='Keypoint radius for visualization')
-    # parser.add_argument(
-    #     '--thickness',
-    #     type=int,
-    #     default=1,
-    #     help='Link thickness for visualization')
-
-    # args = parser.parse_args()
-    # assert args.show or (args.out_img_root != '')
-
     coco = COCO(json_file)
     # build the pose model from a config file and a checkpoint file
     pose_model = init_pose_model(
@@ -82,11 +41,7 @@ def main():
     # e.g. use ('backbone', ) to return backbone feature
     output_layer_names = None
     
-    # results_output = {'file_name' : [], 
-    #                   'id' : [], 
-    #                   'eye_r' : [],
-    #                   'eye_l' : [],
-    #                   'neck' : []}
+    
     result_name = []
     result_id = []
     result_head = []
