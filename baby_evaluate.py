@@ -207,7 +207,7 @@ def main():
             show=False, 
             out_file=out_file)
         
-    results_points.to_csv('result_keypoints.csv')
+    results_points.to_csv(os.path.join(out_img_root, 'result_keypoints.csv'))
         
     # with open(os.path.join(out_img_root, 'result_keypoints.txt'), 'w') as f:
     #     for i in range(len(result_name)):
