@@ -48,6 +48,24 @@ def main():
     result_eye_r = []
     result_eye_l = []
     result_neck = []
+    
+    result_right_shoulder = []
+    result_right_elbow = []
+    result_right_wrist = []
+    result_right_hand = []
+    result_left_shoulder = []
+    result_left_elbow = []
+    result_left_wrist = []
+    result_left_hand = []
+    result_pelvis = []
+    result_right_hip = []
+    result_right_knee = []
+    result_right_ankle = []
+    result_right_foot = []
+    result_left_hip = []
+    result_left_knee = []
+    result_left_ankle = []
+    result_left_foot = []
 
     # process each image
     # with open(os.path.join(out_img_root, 'result_keypoints.txt'), 'w') as f:
@@ -85,6 +103,24 @@ def main():
         result_eye_r.append(str(pose_results[0]['keypoints'][1][0]) + ', ' + str(pose_results[0]['keypoints'][1][1]))
         result_eye_l.append(str(pose_results[0]['keypoints'][2][0]) + ', ' + str(pose_results[0]['keypoints'][2][1]))
         result_neck.append(str(pose_results[0]['keypoints'][3][0]) + ', ' + str(pose_results[0]['keypoints'][3][1]))
+        
+        result_right_shoulder.append(str(pose_results[0]['keypoints'][4][0]) + ', ' + str(pose_results[0]['keypoints'][4][1]))
+        result_right_elbow.append(str(pose_results[0]['keypoints'][5][0]) + ', ' + str(pose_results[0]['keypoints'][5][1]))
+        result_right_wrist.append(str(pose_results[0]['keypoints'][6][0]) + ', ' + str(pose_results[0]['keypoints'][6][1]))
+        result_right_hand.append(str(pose_results[0]['keypoints'][7][0]) + ', ' + str(pose_results[0]['keypoints'][7][1]))
+        result_left_shoulder.append(str(pose_results[0]['keypoints'][8][0]) + ', ' + str(pose_results[0]['keypoints'][8][1]))
+        result_left_elbow.append(str(pose_results[0]['keypoints'][9][0]) + ', ' + str(pose_results[0]['keypoints'][9][1]))
+        result_left_wrist.append(str(pose_results[0]['keypoints'][10][0]) + ', ' + str(pose_results[0]['keypoints'][10][1]))
+        result_left_hand.append(str(pose_results[0]['keypoints'][11][0]) + ', ' + str(pose_results[0]['keypoints'][11][1]))
+        result_pelvis.append(str(pose_results[0]['keypoints'][12][0]) + ', ' + str(pose_results[0]['keypoints'][12][1]))
+        result_right_hip.append(str(pose_results[0]['keypoints'][13][0]) + ', ' + str(pose_results[0]['keypoints'][13][1]))
+        result_right_knee.append(str(pose_results[0]['keypoints'][14][0]) + ', ' + str(pose_results[0]['keypoints'][14][1]))
+        result_right_ankle.append(str(pose_results[0]['keypoints'][15][0]) + ', ' + str(pose_results[0]['keypoints'][15][1]))
+        result_right_foot.append(str(pose_results[0]['keypoints'][16][0]) + ', ' + str(pose_results[0]['keypoints'][16][1]))
+        result_left_hip.append(str(pose_results[0]['keypoints'][17][0]) + ', ' + str(pose_results[0]['keypoints'][17][1]))
+        result_left_knee.append(str(pose_results[0]['keypoints'][18][0]) + ', ' + str(pose_results[0]['keypoints'][18][1]))
+        result_left_ankle.append(str(pose_results[0]['keypoints'][19][0]) + ', ' + str(pose_results[0]['keypoints'][19][1]))
+        result_left_foot.append(str(pose_results[0]['keypoints'][20][0]) + ', ' + str(pose_results[0]['keypoints'][20][1]))
 
         if out_img_root == '':
             out_file = None
@@ -107,7 +143,30 @@ def main():
     with open(os.path.join(out_img_root, 'result_keypoints.txt'), 'w') as f:
         for i in range(len(result_name)):
             
-            ff_write = result_name[i] + ' // ' + result_id[i] + '// [' + result_head[i] + '], [' + result_eye_r[i] + '], [' + result_eye_l[i] + '], [' + result_neck[i] + '] \n'
+            ff_write = ''
+            ff_write += result_name[i] + ' // \n'
+            ff_write += result_id[i] + '// \n'
+            ff_write += '[' + result_head[i] + '], \n'
+            ff_write += '[' + result_eye_r[i] + '], \n'
+            ff_write += '[' + result_eye_l[i] + '], \n'
+            ff_write += '[' + result_neck[i] + '] \n'
+            ff_write += '[' + result_right_shoulder[i] + '] \n'
+            ff_write += '[' + result_right_elbow[i] + '] \n'
+            ff_write += '[' + result_right_wrist[i] + '] \n'
+            ff_write += '[' + result_right_hand[i] + '] \n'
+            ff_write += '[' + result_left_shoulder[i] + '] \n'
+            ff_write += '[' + result_left_elbow[i] + '] \n'
+            ff_write += '[' + result_left_wrist[i] + '] \n'
+            ff_write += '[' + result_left_hand[i] + '] \n'
+            ff_write += '[' + result_pelvis[i] + '] \n'
+            ff_write += '[' + result_right_hip[i] + '] \n'
+            ff_write += '[' + result_right_knee[i] + '] \n'
+            ff_write += '[' + result_right_ankle[i] + '] \n'
+            ff_write += '[' + result_right_foot[i] + '] \n'
+            ff_write += '[' + result_left_hip[i] + '] \n'
+            ff_write += '[' + result_left_knee[i] + '] \n'
+            ff_write += '[' + result_left_ankle[i] + '] \n'
+            ff_write += '[' + result_left_foot[i] + '] \n'
             
             f.write(ff_write)
 
