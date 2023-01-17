@@ -45,27 +45,27 @@ from imgaug.augmentables import Keypoint, KeypointsOnImage
 
 
 # After 
-# - node1: Head
-# - node2: Eye_R
-# - node3: Eye_L  
-# - node4: Neck
-# - node5: Sholuder_R
-# - node6: Elbow_high_R  ##
-# - node7: Wrist_high_R ##
-# - node8: Hand_R 
-# - node9: Sholuder_L 
-# - node10: Elbow_high_L  ##
-# - node11: Wrist_high_L  ##
-# - node12: Hand_L 
-# - node13: Pelvis 
-# - node14: Hip_R 
-# - node15: Knee_right_R 
-# - node16: Ankle_right_R 
-# - node17: Foot_R 
-# - node18: Hip_L 
-# - node19: Knee_right_L 
-# - node20: Ankle_right_L 
-# - node21: Foot_L
+# -  Head(node1)
+# -  Eye_R(node2)
+# -  Eye_L(node3)
+# -  Neck(node4)
+# -  Sholuder_R(node5)
+# -  Elbow_high_R(node6)
+# -  Wrist_high_R(node7)
+# -  Hand_R (node8)
+# -  Sholuder_L (node9)
+# - : Elbow_high_L(node10)
+# - : Wrist_high_L(node11)
+# - : Hand_L(node12)
+# - : Pelvis(node13)
+# - : Hip_R(node14)
+# - : Knee_right_R(node15)
+# - : Ankle_right_R(node16)
+# - : Foot_R(node17)
+# - : Hip_L(node18)
+# - : Knee_right_L(node19)
+# - : Ankle_right_L(node20)
+# - : Foot_L(node21)
 
 
 # cur_dir = os.path.dirname(os.path.abspath('openpose'))

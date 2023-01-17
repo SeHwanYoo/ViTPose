@@ -43,7 +43,7 @@ def main():
     # e.g. use ('backbone', ) to return backbone feature
     output_layer_names = None
     
-    results_points = pd.DataFrame(columns=['filename', 
+    results_points = pd.DataFrame(columns=['file_name', 
                                            'id', 
                                            'head_x', 
                                            'head_y', 
