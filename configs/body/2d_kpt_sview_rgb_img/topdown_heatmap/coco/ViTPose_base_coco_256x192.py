@@ -42,9 +42,9 @@ channel_cfg = dict(
 # model settings
 model = dict(
     type='TopDown',
-    # pretrained=None,    
-    pretrained='https://download.openmmlab.com/mmpose/'
-    'pretrain_models/vitpose-b.pth',
+    pretrained=None,    
+    # pretrained='https://download.openmmlab.com/mmpose/'
+    # 'pretrain_models/vitpose-b.pth',
     backbone=dict(
         type='ViT',
         img_size=(256, 192),
