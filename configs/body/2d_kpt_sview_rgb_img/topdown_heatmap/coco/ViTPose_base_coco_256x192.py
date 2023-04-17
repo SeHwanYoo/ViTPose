@@ -42,7 +42,7 @@ channel_cfg = dict(
 # model settings
 model = dict(
     type='TopDown',
-    # pretrained=None,
+    # pretrained=None,    
     pretrained='https://download.openmmlab.com/mmpose/'
     'pretrain_models/vitpose-b.pth',
     backbone=dict(
