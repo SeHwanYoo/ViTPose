@@ -19,7 +19,7 @@ import argparse
 import os.path as osp 
 
 # pose_config = 'configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/ViTPose_base_coco_256x192.py'
-pose_config = 'configs/body/2d_kpt_sview_rgb_img/deeppose/coco/4xmspn50_coco_256x192.py'
+pose_config = 'configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/4xmspn50_coco_256x192.py'
 # pose_checkpoint = 'checkout'
 pose_checkpoint = None
 img_root = '../../datasets/GM/images/train'
