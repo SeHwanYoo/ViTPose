@@ -14,7 +14,8 @@ import pandas as pd
 
 # pose_config = 'configs/body/2d_kpt_sview_rgb_img/topdown_heatmap/coco/ViTPose_base_coco_256x192.py'
 pose_config = 'configs/body/2d_kpt_sview_rgb_img/deeppose/coco/res50_coco_256x192.py'
-pose_checkpoint = 'outputs/20221007/latest.pth'
+# pose_checkpoint = 'outputs/20221007/latest.pth'
+pose_checkpoint = 'outputs/20221007/best_AP_epoch_210.pth'
 
 json_file = '../../datasets/GM/annotations/test_baby_keypoints.json'
 img_root = '../../datasets/GM/images/test'
