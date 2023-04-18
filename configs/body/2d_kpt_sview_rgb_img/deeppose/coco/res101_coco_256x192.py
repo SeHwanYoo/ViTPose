@@ -18,13 +18,21 @@ lr_config = dict(
     step=[170, 200])
 total_epochs = 210
 channel_cfg = dict(
-    num_output_channels=17,
-    dataset_joints=17,
+    # num_output_channels=17,
+    # dataset_joints=17,
+    # dataset_channel=[
+    #     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    # ],
+    # inference_channel=[
+    #     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+    # ])
+    num_output_channels=21,
+    dataset_joints=21,
     dataset_channel=[
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
     ],
     inference_channel=[
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
     ])
 
 # model settings
@@ -54,8 +62,9 @@ data_cfg = dict(
     vis_thr=0.2,
     use_gt_bbox=False,
     det_bbox_thr=0.0,
-    bbox_file='data/coco/person_detection_results/'
-    'COCO_val2017_detections_AP_H_56_person.json',
+    # bbox_file='data/coco/person_detection_results/'
+    # 'COCO_val2017_detections_AP_H_56_person.json',
+    bbox_file = '/home/sehwan/datasets/GM/bbox_info.json'
 )
 
 train_pipeline = [
@@ -102,31 +111,60 @@ val_pipeline = [
 
 test_pipeline = val_pipeline
 
-data_root = 'data/coco'
+data_root = '/home/sehwan/datasets/GM'
 data = dict(
-    samples_per_gpu=64,
-    workers_per_gpu=2,
-    val_dataloader=dict(samples_per_gpu=32),
-    test_dataloader=dict(samples_per_gpu=32),
+    samples_per_gpu=16,
+    workers_per_gpu=4,
+    val_dataloader=dict(samples_per_gpu=8),
+    test_dataloader=dict(samples_per_gpu=8),
     train=dict(
         type='TopDownCocoDataset',
-        ann_file=f'{data_root}/annotations/person_keypoints_train2017.json',
-        img_prefix=f'{data_root}/train2017/',
+        ann_file=f'{data_root}/annotations/train_baby_keypoints.json',
+        img_prefix=f'{data_root}/images/train/',
         data_cfg=data_cfg,
         pipeline=train_pipeline,
         dataset_info={{_base_.dataset_info}}),
     val=dict(
         type='TopDownCocoDataset',
-        ann_file=f'{data_root}/annotations/person_keypoints_val2017.json',
-        img_prefix=f'{data_root}/val2017/',
+        ann_file=f'{data_root}/annotations/valid_baby_keypoints.json',
+        img_prefix=f'{data_root}/images/valid/',
         data_cfg=data_cfg,
         pipeline=val_pipeline,
         dataset_info={{_base_.dataset_info}}),
     test=dict(
         type='TopDownCocoDataset',
-        ann_file=f'{data_root}/annotations/person_keypoints_val2017.json',
-        img_prefix=f'{data_root}/val2017/',
+        ann_file=f'{data_root}/annotations/test_baby_keypoints.json',
+        img_prefix=f'{data_root}/images/test/',
         data_cfg=data_cfg,
         pipeline=test_pipeline,
         dataset_info={{_base_.dataset_info}}),
 )
+
+# data_root = 'data/coco'
+# data = dict(
+#     samples_per_gpu=64,
+#     workers_per_gpu=2,
+#     val_dataloader=dict(samples_per_gpu=32),
+#     test_dataloader=dict(samples_per_gpu=32),
+#     train=dict(
+#         type='TopDownCocoDataset',
+#         ann_file=f'{data_root}/annotations/person_keypoints_train2017.json',
+#         img_prefix=f'{data_root}/train2017/',
+#         data_cfg=data_cfg,
+#         pipeline=train_pipeline,
+#         dataset_info={{_base_.dataset_info}}),
+#     val=dict(
+#         type='TopDownCocoDataset',
+#         ann_file=f'{data_root}/annotations/person_keypoints_val2017.json',
+#         img_prefix=f'{data_root}/val2017/',
+#         data_cfg=data_cfg,
+#         pipeline=val_pipeline,
+#         dataset_info={{_base_.dataset_info}}),
+#     test=dict(
+#         type='TopDownCocoDataset',
+#         ann_file=f'{data_root}/annotations/person_keypoints_val2017.json',
+#         img_prefix=f'{data_root}/val2017/',
+#         data_cfg=data_cfg,
+#         pipeline=test_pipeline,
+#         dataset_info={{_base_.dataset_info}}),
+# )
