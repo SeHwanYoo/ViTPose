@@ -499,7 +499,7 @@ for c in clients:
     train, test = datalist_split(client_list, 0.6)    
     train_list.extend(train)
 
-    test, valid = datalist_split(test, 0.4)
+    test, valid = datalist_split(test, 0.5)
     test_list.extend(test)
     valid_list.extend(valid)
 
